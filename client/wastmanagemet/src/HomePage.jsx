@@ -71,7 +71,7 @@ export default function HomePage() {
   }}
 ></div>
 
-<div className="absolute inset-0 bg-black bg-opacity-50"></div>
+<div className="absolute inset-0 bg-black bg-opacity-5"></div>
         <div className="relative z-10 p-4">
           <h2 className="text-5xl font-extrabold mb-4 ">Welcome to Smart Waste Management</h2>
           <p className="text-lg mb-8">Join the eco-revolution with gamified waste management.</p>
