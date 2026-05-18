@@ -112,7 +112,7 @@ export default function App() {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url("${bg"})`,
+          backgroundImage: `url(${bg})`,
           filter: "blur(6px)",
           transform: "scale(1.05)"
         }}
