@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const heroBg =
-  'https://placehold.co/1920x800/14532d/ffffff?text=Smart+Waste+Management';
+const heroBg = assetUrl('homepage.png');
 
 // Importing all necessary icons from react-icons
 import {
