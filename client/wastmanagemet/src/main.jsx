@@ -8,6 +8,7 @@ import Signup from './components/common/Signup.jsx'
 import Profile from './components/user/profile.jsx'
 import Learn from './components/user/learn.jsx'
 import Quiz from './components/user/quiz.jsx'
+import GameZone from './components/user/gameZone.jsx'
 import LiveTracking from './components/user/liveTracking.jsx'
 import GeoTagging from './components/user/geoTagging.jsx'
 import Purchase from './components/user/purchase.jsx'
@@ -23,7 +24,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/profile" element={<Profile />} />
         <Route path="/learn" element={<Learn />} />
         <Route path="/quiz" element={<Quiz />} />
-        <Route path="/game-zone" element={<Quiz />} />
+        <Route path="/game-zone" element={<GameZone />} />
         <Route path="/track/:vehicleId" element={<VehicleMapPage />} />
         <Route path="/live-tracking" element={<LiveTracking />} />
         <Route path="/geo-tagging" element={<GeoTagging />} />
