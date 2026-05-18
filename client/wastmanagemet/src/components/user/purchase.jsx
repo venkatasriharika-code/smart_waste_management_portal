@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import bins from './assets/bins.png';
-
+import compostkit from './assets/compostkit.png';
+import wastedecomposer from './assets/wastedecomposer.png';
 // Importing all necessary icons
 import {
   FaHome, FaSignInAlt, FaBook, FaQuestionCircle, FaGamepad, FaBroadcastTower,
@@ -84,6 +85,7 @@ const products = [
   {
     id: 2,
     name: "Compost Maker Kit",
+    image_url: compostkit,
     description: "Complete kit for home composting with organic activator and guide.",
     rating: 4.6,
     reviews: 88,
@@ -95,6 +97,7 @@ const products = [
   {
     id: 3,
     name: "Organic Waste Decomposer",
+    image_url: wastedecomposer,
     description: "Accelerates composting process, 100% organic and eco-friendly.",
     rating: 4.7,
     reviews: 234,
