@@ -3,19 +3,33 @@ import { Link, useLocation } from 'react-router-dom';
 
 // Importing all necessary icons
 import {
-  FaHome, FaSignInAlt, FaBook, FaQuestionCircle, FaGamepad, FaBroadcastTower,
-  FaMapMarkerAlt, FaShoppingCart, FaUserCircle, FaCog, FaRecycle, FaLeaf,
-  FaTrashAlt, FaListOl, FaClock, FaArrowLeft
+  FaHome,
+  FaSignInAlt,
+  FaBook,
+  FaQuestionCircle,
+  FaGamepad,
+  FaBroadcastTower,
+  FaMapMarkerAlt,
+  FaShoppingCart,
+  FaUserCircle,
+  FaRecycle,
+  FaLeaf,
+  FaTrashAlt,
+  FaListOl,
+  FaClock,
+  FaArrowLeft,
 } from 'react-icons/fa';
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// +++ HEADER COMPONENT (Included directly as requested)
+// +++ HEADER COMPONENT
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 const Header = () => {
   const location = useLocation();
 
   const NavItem = ({ to, icon, label }) => {
     const isActive = location.pathname === to;
+
     return (
       <Link
         to={to}
@@ -30,33 +44,50 @@ const Header = () => {
   };
 
   return (
-   <header className="sticky top-0 z-50 bg-white">
-      {/* Dark Green Top Bar */}
+    <header className="sticky top-0 z-50 bg-white">
+      {/* Top Bar */}
       <div className="bg-gradient-to-l from-green-900 via-green-900 to-blue-900 text-white p-4 flex flex-col items-center text-center">
-        <div className="flex items-center gap-3">
-          
-          <div>
-            <h1 className="text-2xl font-bold tracking-wider">SMART WASTE MANAGEMENT PORTAL</h1>
-            <p className="text-sm">Eco Tycoon: Ultimate Trash Collector</p>
-          </div>
+        <div>
+          <h1 className="text-2xl font-bold tracking-wider">
+            SMART WASTE MANAGEMENT PORTAL
+          </h1>
+
+          <p className="text-sm">
+            Eco Tycoon: Ultimate Trash Collector
+          </p>
         </div>
       </div>
-      {/* Main Navigation Bar */}
+
+      {/* Navigation */}
       <nav className="bg-green-600 text-white shadow-md">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center py-2">
-            <div className="flex items-center gap-4">
-              
+            <div className="flex items-center gap-4 flex-wrap">
               <NavItem to="/" icon={<FaHome />} label="Home" />
               <NavItem to="/login" icon={<FaSignInAlt />} label="Login" />
               <NavItem to="/learn" icon={<FaBook />} label="Learn" />
               <NavItem to="/quiz" icon={<FaQuestionCircle />} label="Quiz" />
               <NavItem to="/game-zone" icon={<FaGamepad />} label="Game Zone" />
-           
-              <NavItem to="/live-tracking" icon={<FaBroadcastTower />} label="Live Tracking" />
-              <NavItem to="/geo-tagging" icon={<FaMapMarkerAlt />} label="Geo-Tagging" />
-              <NavItem to="/purchase" icon={<FaShoppingCart />} label="Purchase" />
-              <NavItem to="/profile" icon={<FaUserCircle />} label="Profile" />
+              <NavItem
+                to="/live-tracking"
+                icon={<FaBroadcastTower />}
+                label="Live Tracking"
+              />
+              <NavItem
+                to="/geo-tagging"
+                icon={<FaMapMarkerAlt />}
+                label="Geo-Tagging"
+              />
+              <NavItem
+                to="/purchase"
+                icon={<FaShoppingCart />}
+                label="Purchase"
+              />
+              <NavItem
+                to="/profile"
+                icon={<FaUserCircle />}
+                label="Profile"
+              />
             </div>
           </div>
         </div>
@@ -66,53 +97,186 @@ const Header = () => {
 };
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// +++ Data for the Quiz Levels
+// +++ QUIZ LEVELS
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 const quizLevels = [
   {
     id: 1,
-    title: "Recycling Basics",
-    description: "Test your knowledge on what can and cannot be recycled.",
+    title: 'Recycling Basics',
+    description:
+      'Test your knowledge on what can and cannot be recycled.',
     icon: <FaRecycle />,
-    color: "blue",
+    color: 'blue',
     details: {
-      type: "Multiple Choice",
+      type: 'Multiple Choice',
       questions: 10,
-      time: "5 minutes",
+      time: '5 minutes',
     },
   },
+
   {
     id: 2,
-    title: "Composting Fun",
-    description: "Learn the fundamentals of turning waste into wealth.",
+    title: 'Composting Fun',
+    description:
+      'Learn the fundamentals of turning waste into wealth.',
     icon: <FaLeaf />,
-    color: "green",
+    color: 'green',
     details: {
-      type: "True / False",
-      questions: 15,
-      time: "7 minutes",
+      type: 'True / False',
+      questions: 10,
+      time: '7 minutes',
     },
   },
+
   {
     id: 3,
-    title: "Trash Challenge",
-    description: "A challenging quiz on hazardous and e-waste management.",
+    title: 'Trash Challenge',
+    description:
+      'A challenging quiz on hazardous and e-waste management.',
     icon: <FaTrashAlt />,
-    color: "red",
+    color: 'red',
     details: {
-      type: "Mixed Format",
-      questions: 20,
-      time: "10 minutes",
+      type: 'Mixed Format',
+      questions: 10,
+      time: '10 minutes',
     },
   },
 ];
 
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// +++ MAIN QUIZ PAGE
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// +++ MAIN QUIZ PAGE COMPONENT
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 export default function QuizPage() {
   const [selectedQuiz, setSelectedQuiz] = useState(null);
+
+  const [questions, setQuestions] = useState([]);
+
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+
+  const [score, setScore] = useState(0);
+
+  const [quizStarted, setQuizStarted] = useState(false);
+
+  const [loading, setLoading] = useState(false);
+
+  // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  // +++ START QUIZ FUNCTION
+  // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+  const startQuiz = async () => {
+    setLoading(true);
+
+    try {
+      const response = await fetch(
+        'https://opentdb.com/api.php?amount=10&type=multiple'
+      );
+
+      const data = await response.json();
+
+      const formattedQuestions = data.results.map((q) => ({
+        question: q.question,
+
+        options: [
+          ...q.incorrect_answers,
+          q.correct_answer,
+        ].sort(() => Math.random() - 0.5),
+
+        answer: q.correct_answer,
+      }));
+
+      setQuestions(formattedQuestions);
+
+      setCurrentQuestion(0);
+
+      setScore(0);
+
+      setQuizStarted(true);
+    } catch (error) {
+      console.log(error);
+    }
+
+    setLoading(false);
+  };
+
+  // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  // +++ HANDLE ANSWER
+  // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+  const handleAnswer = (option) => {
+    let updatedScore = score;
+
+    if (option === questions[currentQuestion].answer) {
+      updatedScore = score + 1;
+
+      setScore(updatedScore);
+    }
+
+    if (currentQuestion + 1 < questions.length) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      alert(
+        `Quiz Finished!\n\nYour Score: ${updatedScore}/${questions.length}`
+      );
+
+      setQuizStarted(false);
+
+      setSelectedQuiz(null);
+    }
+  };
+
+  // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  // +++ QUIZ SCREEN
+  // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+  if (quizStarted && questions.length > 0) {
+    return (
+      <div className="bg-gray-100 min-h-screen">
+        <Header />
+
+        <main className="container mx-auto py-10 px-4">
+          <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6">
+              Question {currentQuestion + 1} / {questions.length}
+            </h2>
+
+            <p
+              className="text-lg text-gray-700 mb-8"
+              dangerouslySetInnerHTML={{
+                __html: questions[currentQuestion].question,
+              }}
+            />
+
+            <div className="space-y-4">
+              {questions[currentQuestion].options.map(
+                (option, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleAnswer(option)}
+                    className="w-full bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-lg text-left transition"
+                    dangerouslySetInnerHTML={{
+                      __html: option,
+                    }}
+                  />
+                )
+              )}
+            </div>
+
+            <div className="mt-8 text-right">
+              <p className="text-lg font-bold text-gray-700">
+                Score: {score}
+              </p>
+            </div>
+          </div>
+        </main>
+      </div>
+    );
+  }
+
+  // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  // +++ MAIN PAGE
+  // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
   return (
     <div className="bg-gray-100 min-h-screen">
@@ -120,23 +284,38 @@ export default function QuizPage() {
 
       <main className="container mx-auto py-10 px-4">
         {/* Page Title */}
+
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-800 flex items-center justify-center gap-3">
             <FaQuestionCircle className="text-cyan-800" />
+
             Quiz Zone
           </h1>
-          <p className="text-gray-600 mt-2">Select a level to test your knowledge and earn points!</p>
+
+          <p className="text-gray-600 mt-2">
+            Select a level to test your knowledge and earn points!
+          </p>
         </div>
 
-        {/* Conditional Rendering: Show Levels or Details */}
+        {/* SHOW QUIZ LEVELS */}
+
         {!selectedQuiz ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {quizLevels.map((quiz) => (
-              <QuizLevelCard key={quiz.id} quiz={quiz} onSelect={() => setSelectedQuiz(quiz)} />
+              <QuizLevelCard
+                key={quiz.id}
+                quiz={quiz}
+                onSelect={() => setSelectedQuiz(quiz)}
+              />
             ))}
           </div>
         ) : (
-          <QuizDetailsCard quiz={selectedQuiz} onBack={() => setSelectedQuiz(null)} />
+          <QuizDetailsCard
+            quiz={selectedQuiz}
+            onBack={() => setSelectedQuiz(null)}
+            onStart={startQuiz}
+            loading={loading}
+          />
         )}
       </main>
     </div>
@@ -144,15 +323,19 @@ export default function QuizPage() {
 }
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// +++ Helper Components
+// +++ QUIZ LEVEL CARD
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// Card for showing the quiz level choice
 const QuizLevelCard = ({ quiz, onSelect }) => {
   const colors = {
-    blue: "from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700",
-    green: "from-green-500 to-green-600 hover:from-green-600 hover:to-green-700",
-    red: "from-red-500 to-red-600 hover:from-red-600 hover:to-red-700",
+    blue:
+      'from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700',
+
+    green:
+      'from-green-500 to-green-600 hover:from-green-600 hover:to-green-700',
+
+    red:
+      'from-red-500 to-red-600 hover:from-red-600 hover:to-red-700',
   };
 
   return (
@@ -160,53 +343,96 @@ const QuizLevelCard = ({ quiz, onSelect }) => {
       onClick={onSelect}
       className={`bg-gradient-to-br ${colors[quiz.color]} text-white p-8 rounded-xl shadow-lg cursor-pointer transform hover:-translate-y-2 transition-transform duration-300 flex flex-col items-center text-center`}
     >
-      <div className="text-6xl mb-4">{quiz.icon}</div>
-      <h3 className="text-2xl font-bold mb-2">{quiz.title}</h3>
-      <p className="text-sm opacity-90">{quiz.description}</p>
+      <div className="text-6xl mb-4">
+        {quiz.icon}
+      </div>
+
+      <h3 className="text-2xl font-bold mb-2">
+        {quiz.title}
+      </h3>
+
+      <p className="text-sm opacity-90">
+        {quiz.description}
+      </p>
     </div>
   );
 };
 
-// Card for showing details of the selected quiz
-const QuizDetailsCard = ({ quiz, onBack }) => {
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// +++ QUIZ DETAILS CARD
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+const QuizDetailsCard = ({
+  quiz,
+  onBack,
+  onStart,
+  loading,
+}) => {
   return (
-    <div className="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-lg relative animate-fade-in">
+    <div className="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-lg relative">
       <button
         onClick={onBack}
         className="absolute top-4 left-6 text-gray-500 hover:text-gray-800 transition-colors"
       >
         <FaArrowLeft size={20} />
       </button>
+
       <div className="text-center">
-        <div className={`text-6xl mb-4 text-${quiz.color}-500 inline-block`}>{quiz.icon}</div>
-        <h2 className="text-3xl font-bold text-gray-800">{quiz.title}</h2>
+        <div className="text-6xl mb-4 text-green-600 inline-block">
+          {quiz.icon}
+        </div>
+
+        <h2 className="text-3xl font-bold text-gray-800">
+          {quiz.title}
+        </h2>
       </div>
 
       <div className="mt-8 border-t pt-6">
         <ul className="space-y-4 text-lg">
           <li className="flex items-center justify-between">
-            <span className="font-semibold text-gray-600 flex items-center gap-2"><FaQuestionCircle /> Type:</span>
-            <span className="font-bold text-gray-800">{quiz.details.type}</span>
+            <span className="font-semibold text-gray-600 flex items-center gap-2">
+              <FaQuestionCircle />
+              Type:
+            </span>
+
+            <span className="font-bold text-gray-800">
+              {quiz.details.type}
+            </span>
           </li>
+
           <li className="flex items-center justify-between">
-            <span className="font-semibold text-gray-600 flex items-center gap-2"><FaListOl /> Questions:</span>
-            <span className="font-bold text-gray-800">{quiz.details.questions}</span>
+            <span className="font-semibold text-gray-600 flex items-center gap-2">
+              <FaListOl />
+              Questions:
+            </span>
+
+            <span className="font-bold text-gray-800">
+              {quiz.details.questions}
+            </span>
           </li>
+
           <li className="flex items-center justify-between">
-            <span className="font-semibold text-gray-600 flex items-center gap-2"><FaClock /> Time Limit:</span>
-            <span className="font-bold text-gray-800">{quiz.details.time}</span>
+            <span className="font-semibold text-gray-600 flex items-center gap-2">
+              <FaClock />
+              Time Limit:
+            </span>
+
+            <span className="font-bold text-gray-800">
+              {quiz.details.time}
+            </span>
           </li>
         </ul>
       </div>
 
       <div className="mt-8 text-center">
-        <button className={`w-full bg-${quiz.color}-500 hover:bg-${quiz.color}-600 text-white font-bold py-3 px-6 rounded-lg text-lg transition-transform transform hover:scale-105`}>
-          Start Quiz
+        <button
+          onClick={onStart}
+          disabled={loading}
+          className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg text-lg transition-transform transform hover:scale-105"
+        >
+          {loading ? 'Loading Questions...' : 'Start Quiz'}
         </button>
       </div>
     </div>
   );
 };
-
-
-
