@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-const heroBg =
-  'https://placehold.co/1920x800/14532d/ffffff?text=Smart+Waste+Management';
+import heroBg from './assets/homepage.png';
 
 // Importing all necessary icons from react-icons
 import {
@@ -66,9 +64,14 @@ export default function HomePage() {
         className="relative flex items-center justify-center h-[55vh] bg-cover bg-center text-center text-white"
         
       >
-        <div className="absolute inset-0 bg-black bg-opacity-40"
-        style={{ backgroundImage: `url(${heroBg})` ,filter: "blur(6px)",       // blur effect (~70%)
-          transform: "scale(1.05)" }}></div>
+<div
+  className="absolute inset-0 bg-cover bg-center"
+  style={{
+    backgroundImage: `url(${heroBg})`
+  }}
+></div>
+
+<div className="absolute inset-0 bg-black bg-opacity-50"></div>
         <div className="relative z-10 p-4">
           <h2 className="text-5xl font-extrabold mb-4 ">Welcome to Smart Waste Management</h2>
           <p className="text-lg mb-8">Join the eco-revolution with gamified waste management.</p>
